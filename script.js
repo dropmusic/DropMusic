@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Configura o envio do formulário de contato
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-    // event.preventDefault(); // <-- COMENTE OU REMOVA ESTA LINHA
-        sendContactForm(); // Sua função atual será executada ANTES de abrir o mailto:
+   // Configura o envio do formulário de contato
+    document.getElementById('contact-form').addEventListener('submit', function(event) { 
+    // event.preventDefault(); // Comente ou remova: permite o envio via mailto:
+    
+    // Opcional: Se quiser que a função 'sendContactForm' pare de rodar:
+    // sendContactForm(); 
 });
     
     // Adiciona listener para a tecla Enter na barra de pesquisa
