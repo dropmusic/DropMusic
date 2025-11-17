@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- Define o documento como HTML5 e o idioma principal como Português (Brasil) -->
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres para suportar acentuação e caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a visualização para ser responsiva em dispositivos móveis -->
+    <title>DropMusic</title> <!-- Título que aparece na aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- Vincula o arquivo de estilos CSS externo (style.css) ao documento -->
+</head>
+<body>
+
+    <header> <!-- Início da seção de cabeçalho do site (geralmente contém logo, navegação e busca) -->
+        <h1 id="title">DropMusic</h1> <!-- Título principal ou nome do site -->
+        
+        <div id="admin-area" style="margin-bottom: 10px;"> <!-- Contêiner para a funcionalidade de login de administrador -->
+            <button id="btn-admin-login" onclick="showAdminPrompt()">Modo Administrador</button> <!-- Botão para acionar a função de login (no JS) -->
+            <span id="admin-status" style="color: #ff6600; font-weight: bold; margin-left: 10px; display: none;">(Modo Admin Ativo)</span> <!-- Mensagem de status que aparece quando o administrador está logado -->
+        </div>
+        <nav id="nav-menu"> <!-- Início do menu de navegação principal -->
+            <!-- Links de navegação que ativam a função de troca de página (no JS, através do atributo data-page) -->
+            <a class="nav-link active" data-page="noticias">NOTÍCIAS</a> <!-- Link para a página de Notícias (ativo por padrão) -->
+            <a class="nav-link" data-page="reviews">REVIEWS</a> <!-- Link para a página de Reviews -->
+            <a class="nav-link" data-page="contato">CONTATO</a> <!-- Link para a página de Contato -->
+        </nav>
+
+        <div id="search-bar"> <!-- Contêiner para a barra de pesquisa -->
+            <!-- Campo de texto para digitar a busca; onkeydown permite acionar a busca ao pressionar Enter -->
+            <input type="text" id="search-input" placeholder="Buscar no site..." onkeydown="handleSearchKey(event)">
+            <button id="search-button" onclick="searchSite()">Buscar</button> <!-- Botão que chama a função de busca (no JS) -->
+        </div>
+    </header>
+
+    <main> <!-- Início da seção de conteúdo principal do site -->
+        <!-- PÁGINA: NOTÍCIAS -->
+        <div id="noticias" class="page-content active"> <!-- Contêiner da página de notícias (ativa por padrão) -->
+            <h2>Notícias Musicais</h2> <!-- Título da seção -->
+            
+            <div id="admin-tools-noticias" style="display: none;"> <!-- Ferramentas de administrador (aparecem apenas se o admin estiver logado) -->
+                <button class="post-button" id="btn-abrir-noticia" onclick="toggleForm('postagem-noticia')"> <!-- Botão para abrir o formulário de criação de notícia -->
+                    Criar Nova Notícia
+                </button>
+            </div>
+            
+            <div id="postagem-noticia" style="display: none;"> <!-- Formulário para criar uma nova notícia (escondido por padrão) -->
+                <form class="content-form"> <!-- Formulário de postagem -->
+                    <h3>Nova Notícia</h3>
+                    
+                    <label for="noticia-titulo">Título:</label>
+                    <input type="text" id="noticia-titulo"> <!-- Campo para o título da notícia -->
+                    
+                    <label for="noticia-corpo">Corpo do Texto (Notícia):</label>
+                    <textarea id="noticia-corpo"></textarea> <!-- Área de texto para o corpo da notícia -->
+                    
+                    <label for="noticia-imagem">Link da Imagem (URL):</label>
+                    <input type="text" id="noticia-imagem"> <!-- Campo para a URL da imagem -->
+                    
+                    <!-- Botão que chama a função de postagem e lida com o evento 'Enter' -->
+                    <button type="button" class="post-button" onclick="postContent('noticia')" onkeydown="handlePostKey(event, 'noticia')">Postar Notícia</button>
+                    <p id="noticia-status" style="margin-top: 10px;"></p> <!-- Mensagem de status da postagem -->
+                </form>
+            </div>
+
+            <div id="lista-noticias" style="margin-top: 20px;"></div> <!-- Contêiner onde as notícias salvas serão exibidas (via JS) -->
+        </div>
+
+        <!-- PÁGINA: REVIEWS -->
+        <div id="reviews" class="page-content"> <!-- Contêiner da página de reviews (escondida por padrão) -->
+            <h2>Reviews de Álbuns</h2> <!-- Título da seção -->
+            
+            <div id="admin-tools-reviews" style="display: none;"> <!-- Ferramentas de administrador para reviews (escondidas) -->
+                <button class="post-button" id="btn-abrir-review" onclick="toggleForm('postagem-review')"> <!-- Botão para abrir o formulário de criação de review -->
+                    Criar Novo Review
+                </button>
+            </div>
+
+            <div id="postagem-review" style="display: none;"> <!-- Formulário para criar um novo review (escondido por padrão) -->
+                <form class="content-form"> <!-- Formulário de postagem -->
+                    <h3>Novo Review</h3>
+                    
+                    <label for="review-titulo">Título do Álbum/Review:</label>
+                    <input type="text" id="review-titulo"> <!-- Campo para o título do review -->
+                    
+                    <label for="review-corpo">Corpo do Texto (Review):</label>
+                    <textarea id="review-corpo"></textarea> <!-- Área de texto para o corpo do review -->
+                    
+                    <label for="review-imagem">Link da Imagem (URL da Capa/Banda):</label>
+                    <input type="text" id="review-imagem"> <!-- Campo para a URL da imagem -->
+                    <label for="review-nota">Nota (em texto, Ex: 8.5/10):</label>
+                    <input type="text" id="review-nota"> <!-- Campo para a nota do review -->
+                    
+                    <!-- Botão que chama a função de postagem e lida com o evento 'Enter' -->
+                    <button type="button" class="post-button" onclick="postContent('review')" onkeydown="handlePostKey(event, 'review')">Postar Review</button>
+                    <p id="review-status" style="margin-top: 10px;"></p> <!-- Mensagem de status da postagem -->
+                </form>
+            </div>
+
+            <div id="lista-reviews" style="margin-top: 20px;"></div> <!-- Contêiner onde os reviews salvos serão exibidos (via JS) -->
+        </div>
+
+        <!-- PÁGINA: CONTATO -->
+        <div id="contato" class="page-content"> <!-- Contêiner da página de contato (escondida por padrão) -->
+            <h2>Fale Conosco</h2> <!-- Título da seção -->
+           <form id="contact-form" class="contact-form" action="lucas.matheus12@hotmail.com" method="POST" enctype="text/plain">
+                <label for="contato-nome">Nome:</label>
+                <input type="text" id="contato-nome" required> <!-- Campo de nome (obrigatório) -->
+                
+                <label for="contato-email">Email:</label>
+                <!-- Campo de email (obrigatório); onkeydown é apenas para conformidade, sem função de envio -->
+                <input type="email" id="contato-email" required onkeydown="handleContactKey(event)"> 
+                
+                <label for="contato-mensagem">Mensagem:</label>
+                <textarea id="contato-mensagem" required></textarea> <!-- Área de texto para a mensagem (obrigatório) -->
+                
+                <button type="submit" class="send-button">Enviar</button> <!-- Botão de envio (chama a função sendContactForm) -->
+                <p id="contato-status" style="margin-top: 100px;"></p> <!-- Mensagem de status após o envio do formulário -->
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script> <!-- Vincula o arquivo de JavaScript externo (script.js) ao documento -->
+</body>
+</html> <!-- Fim do documento HTML -->

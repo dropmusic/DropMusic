@@ -1,0 +1,155 @@
+/* --- CSS: Estilos do Site DropMusic --- */
+
+/* Estilos gerais aplicados ao corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte do texto */
+    margin: 0; /* Remove a margem padrão do navegador */
+    background-color: #f4f4f4; /* Fundo cinza claro */
+}
+
+/* Estilos aplicados ao cabeçalho (topo do site) */
+header {
+    background-color: #333; /* Fundo preto/cinza escuro */
+    color: white; /* Cor do texto no cabeçalho */
+    padding: 20px 0; /* 20px de preenchimento no topo e base */
+    text-align: center; /* Centraliza o conteúdo */
+}
+
+/* Estilo específico para o título principal (DropMusic) */
+#title {
+    font-size: 2.5em; /* Aumenta o tamanho da fonte */
+    margin-bottom: 10px; /* Margem abaixo do título */
+}
+
+/* Estilo do contêiner do menu de navegação */
+#nav-menu {
+    display: flex; /* Habilita o Flexbox */
+    justify-content: center; /* Centraliza os links */
+    margin-bottom: 20px; /* Margem abaixo do menu */
+}
+
+/* Estilo padrão para todos os links de navegação */
+.nav-link {
+    text-decoration: none; /* Remove o sublinhado */
+    color: white; /* Texto branco */
+    padding: 10px 20px; /* Preenchimento interno */
+    font-weight: bold; /* Texto em negrito */
+    margin: 0 15px; /* Margem entre os links */
+    transition: color 0.3s; /* Transição suave de cor */
+    cursor: pointer; /* Cursor de mão */
+}
+
+/* Estilo de hover e ativo para os links */
+.nav-link:hover, .nav-link.active {
+    color: #ff6600; /* Altera a cor para laranja (destaque) */
+}
+
+/* Estilo para o contêiner da barra de pesquisa */
+#search-bar {
+    margin-bottom: 30px; /* Margem abaixo da barra */
+    text-align: center; /* Centraliza o conteúdo */
+}
+
+/* Estilo para o campo de input de pesquisa */
+#search-input {
+    padding: 10px; /* Preenchimento interno */
+    width: 400px; /* Largura fixa do campo */
+    border: 1px solid #ccc; /* Borda cinza */
+    border-radius: 4px; /* Cantos arredondados */
+}
+
+/* Estilo para o botão de pesquisa */
+#search-button {
+    padding: 10px 15px; /* Preenchimento interno */
+    margin-left: 5px; /* Pequena margem à esquerda */
+    background-color: #555; /* Fundo cinza escuro */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    border-radius: 4px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor de mão */
+}
+
+/* Estilo do botão de pesquisa ao passar o mouse */
+#search-button:hover {
+    background-color: #ff6600; /* Fundo laranja */
+}
+
+/* Estilos aplicados ao conteúdo principal (dentro da tag <main>) */
+main {
+    padding: 20px; /* Preenchimento interno */
+    max-width: 800px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o bloco <main> */
+    background-color: white; /* Fundo branco */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Controla qual página está visível (padrão é escondido) */
+.page-content {
+    display: none; /* Esconde o conteúdo da página por padrão */
+}
+
+/* Seletor que mostra apenas a página que tem a classe 'active' */
+.page-content.active {
+    display: block; /* Exibe o conteúdo da página ativa */
+}
+
+/* Estilos dos Formulários/Botões */
+/* Estilo para os rótulos (labels) dos formulários */
+.content-form label, .contact-form label {
+    display: block; /* Ocupa uma linha inteira */
+    margin-top: 15px; /* Espaço acima do rótulo */
+    font-weight: bold; /* Texto em negrito */
+}
+
+/* Estilo para campos de input de texto e email */
+.content-form input[type="text"], 
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+    width: 100%; /* Ocupa 100% da largura */
+    padding: 8px; /* Preenchimento interno */
+    margin-top: 5px; /* Espaço abaixo do rótulo */
+    box-sizing: border-box; /* Garante que padding e border estejam dentro do 100% */
+    border: 1px solid #ccc; /* Borda cinza */
+    border-radius: 4px; /* Cantos arredondados */
+}
+
+/* Estilo específico para a área de texto (caixa de mensagem) */
+.content-form textarea,
+.contact-form textarea {
+    width: 100%; /* Ocupa 100% da largura */
+    padding: 8px; /* Preenchimento interno */
+    margin-top: 5px; /* Espaço abaixo do rótulo */
+    box-sizing: border-box; /* Inclui padding/border na largura total */
+    border: 1px solid #ccc; /* Borda cinza */
+    border-radius: 4px; /* Cantos arredondados */
+    height: 350px; /* Define a altura fixa da caixa de mensagem */
+}
+
+/* Estilo para os botões de postagem e envio de contato */
+.post-button, .send-button {
+    padding: 10px 20px; /* Preenchimento interno */
+    margin-top: 20px; /* Espaço acima do botão */
+    background-color: #007bff; /* Fundo azul (Cor primária) */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    border-radius: 4px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor de mão */
+    font-size: 1em; /* Tamanho da fonte padrão */
+}
+
+/* --- Novo Estilo para os Posts Salvos --- */
+/* Estilo para o contêiner de cada post (notícia ou review) */
+.post-item {
+    border: 1px solid #ddd; /* Borda fina e clara */
+    padding: 15px; /* Preenchimento interno */
+    margin-bottom: 15px; /* Espaço entre os posts */
+    border-radius: 6px; /* Cantos arredondados */
+    background-color: #fafafa; /* Fundo muito claro */
+}
+
+/* Estilo para o título (h3) dentro de cada post */
+.post-item h3 {
+    color: #333; /* Cor escura para o título */
+    margin-top: 0; /* Remove a margem no topo do título */
+}
