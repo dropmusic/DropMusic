@@ -10,23 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
     loadContent('noticia');
     loadContent('review');
 
-    // Configura os links de navegação
-    document.querySelectorAll('.nav-link').forEach(link => { // Seleciona todos os links com a classe 'nav-link'
-        link.addEventListener('click', function() { // Adiciona um ouvinte de evento de clique a cada link
-            showPage(this.getAttribute('data-page')); // Chama a função para mostrar a página correspondente ao atributo 'data-page'
-        });
+        // Configura os links de navegação
+        document.querySelectorAll('.nav-link').forEach(link => { 
+         link.addEventListener('click', function() { 
+            showPage(this.getAttribute('data-page')); 
+         });
     });
 
-   // Configura o envio do formulário de contato
-    document.getElementById('contact-form').addEventListener('submit', function(event) { 
-    // event.preventDefault(); // Comente ou remova: permite o envio via mailto:
-    
-    // Opcional: Se quiser que a função 'sendContactForm' pare de rodar:
-    // sendContactForm(); 
-});
-    
-    // Adiciona listener para a tecla Enter na barra de pesquisa
-    document.getElementById('search-input').addEventListener('keydown', handleSearchKey); // Ouve a tecla pressionada no campo de busca
+        // Configura o envio do formulário de contato
+        document.getElementById('contact-form').addEventListener('submit', function(event) { 
+         // !!! REMOVIDO: event.preventDefault(); !!!
+        // A função sendContactForm será chamada, mas o envio nativo (mailto:) não será bloqueado.
+         sendContactForm(event); // Passamos o evento para a função
+    });
+
+     // Adiciona listener para a tecla Enter na barra de pesquisa
+     document.getElementById('search-input').addEventListener('keydown', handleSearchKey); 
 });
 
 // --- FUNÇÕES DE ADMINISTRAÇÃO ---
@@ -267,17 +266,20 @@ function postContent(type) {
 
 // --- FUNÇÕES DE CONTATO E BUSCA (ATUALIZADAS) ---
 
-function sendContactForm() {
-    const nome = document.getElementById('contato-nome').value; // Captura o valor do nome
-    const email = document.getElementById('contato-email').value; // Captura o valor do email
-    const mensagem = document.getElementById('contato-mensagem').value; // Captura o valor da mensagem (TEXTAREA)
-    const statusElement = document.getElementById('contato-status'); // Obtém o elemento para exibir o status
+function sendContactForm(event) {
+    const nome = document.getElementById('contato-nome').value; 
+    const email = document.getElementById('contato-email').value; 
+    const mensagem = document.getElementById('contato-mensagem').value; 
+    const statusElement = document.getElementById('contato-status'); 
 
-    // Validação: Verifica se todos os campos (nome, email E mensagem) estão preenchidos
-    if (!nome || !email || !mensagem) {
-        statusElement.textContent = "Preencha todos os campos."; // Mensagem de erro
-        statusElement.style.color = 'red'; // Cor vermelha
-        return; // Sai da função
+     // Validação (feita pelo HTML 'required' e pelo JS)
+     if (!nome || !email || !mensagem) {
+         statusElement.textContent = "Preencha todos os campos."; 
+            statusElement.style.color = 'red'; 
+        // Se a validação falhar, ainda precisamos prevenir o envio, 
+        // pois o preventDefault foi removido do listener principal.
+        event.preventDefault(); 
+        return; 
     }
 
     // SIMULAÇÃO: Envio de Contato (no mundo real, aqui haveria uma chamada a um servidor)
