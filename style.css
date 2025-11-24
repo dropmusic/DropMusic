@@ -44,36 +44,6 @@ header {
     color: #ff6600; /* Altera a cor para laranja (destaque) */
 }
 
-/* Estilo para o contêiner da barra de pesquisa */
-#search-bar {
-    margin-bottom: 30px; /* Margem abaixo da barra */
-    text-align: center; /* Centraliza o conteúdo */
-}
-
-/* Estilo para o campo de input de pesquisa */
-#search-input {
-    padding: 10px; /* Preenchimento interno */
-    width: 400px; /* Largura fixa do campo */
-    border: 1px solid #ccc; /* Borda cinza */
-    border-radius: 4px; /* Cantos arredondados */
-}
-
-/* Estilo para o botão de pesquisa */
-#search-button {
-    padding: 10px 15px; /* Preenchimento interno */
-    margin-left: 5px; /* Pequena margem à esquerda */
-    background-color: #555; /* Fundo cinza escuro */
-    color: white; /* Texto branco */
-    border: none; /* Remove a borda */
-    border-radius: 4px; /* Cantos arredondados */
-    cursor: pointer; /* Cursor de mão */
-}
-
-/* Estilo do botão de pesquisa ao passar o mouse */
-#search-button:hover {
-    background-color: #ff6600; /* Fundo laranja */
-}
-
 /* Estilos aplicados ao conteúdo principal (dentro da tag <main>) */
 main {
     padding: 20px; /* Preenchimento interno */
@@ -94,49 +64,6 @@ main {
     display: block; /* Exibe o conteúdo da página ativa */
 }
 
-/* Estilos dos Formulários/Botões */
-/* Estilo para os rótulos (labels) dos formulários */
-.content-form label, .contact-form label {
-    display: block; /* Ocupa uma linha inteira */
-    margin-top: 15px; /* Espaço acima do rótulo */
-    font-weight: bold; /* Texto em negrito */
-}
-
-/* Estilo para campos de input de texto e email */
-.content-form input[type="text"], 
-.contact-form input[type="text"],
-.contact-form input[type="email"] {
-    width: 100%; /* Ocupa 100% da largura */
-    padding: 8px; /* Preenchimento interno */
-    margin-top: 5px; /* Espaço abaixo do rótulo */
-    box-sizing: border-box; /* Garante que padding e border estejam dentro do 100% */
-    border: 1px solid #ccc; /* Borda cinza */
-    border-radius: 4px; /* Cantos arredondados */
-}
-
-/* Estilo específico para a área de texto (caixa de mensagem) */
-.content-form textarea,
-.contact-form textarea {
-    width: 100%; /* Ocupa 100% da largura */
-    padding: 8px; /* Preenchimento interno */
-    margin-top: 5px; /* Espaço abaixo do rótulo */
-    box-sizing: border-box; /* Inclui padding/border na largura total */
-    border: 1px solid #ccc; /* Borda cinza */
-    border-radius: 4px; /* Cantos arredondados */
-    height: 350px; /* Define a altura fixa da caixa de mensagem */
-}
-
-/* Estilo para os botões de postagem e envio de contato */
-.post-button, .send-button {
-    padding: 10px 20px; /* Preenchimento interno */
-    margin-top: 20px; /* Espaço acima do botão */
-    background-color: #007bff; /* Fundo azul (Cor primária) */
-    color: white; /* Texto branco */
-    border: none; /* Remove a borda */
-    border-radius: 4px; /* Cantos arredondados */
-    cursor: pointer; /* Cursor de mão */
-    font-size: 1em; /* Tamanho da fonte padrão */
-}
 
 /* --- Novo Estilo para os Posts Salvos --- */
 /* Estilo para o contêiner de cada post (notícia ou review) */
