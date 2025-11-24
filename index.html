@@ -21,12 +21,6 @@
             <a class="nav-link" data-page="reviews">REVIEWS</a> <!-- Link para a página de Reviews -->
             <a class="nav-link" data-page="contato">CONTATO</a> <!-- Link para a página de Contato -->
         </nav>
-
-        <div id="search-bar"> <!-- Contêiner para a barra de pesquisa -->
-            <!-- Campo de texto para digitar a busca; onkeydown permite acionar a busca ao pressionar Enter -->
-            <input type="text" id="search-input" placeholder="Buscar no site..." onkeydown="handleSearchKey(event)">
-            <button id="search-button" onclick="searchSite()">Buscar</button> <!-- Botão que chama a função de busca (no JS) -->
-        </div>
     </header>
 
     <main> <!-- Início da seção de conteúdo principal do site -->
@@ -99,19 +93,8 @@
         <!-- PÁGINA: CONTATO -->
         <div id="contato" class="page-content"> <!-- Contêiner da página de contato (escondida por padrão) -->
             <h2>Fale Conosco</h2> <!-- Título da seção -->
-           <form id="contact-form" class="contact-form" action="mailto:lucas.matheus12@hotmail.com" method="POST" enctype="text/plain"></form>
-                <label for="contato-nome">Nome:</label>
-                <input type="text" id="contato-nome" required> <!-- Campo de nome (obrigatório) -->
-                
-                <label for="contato-email">Email:</label>
-                <!-- Campo de email (obrigatório); onkeydown é apenas para conformidade, sem função de envio -->
-                <input type="email" id="contato-email" required onkeydown="handleContactKey(event)"> 
-                
-                <label for="contato-mensagem">Mensagem:</label>
-                <textarea id="contato-mensagem" required></textarea> <!-- Área de texto para a mensagem (obrigatório) -->
-                
-                <button type="submit" class="send-button">Enviar</button> <!-- Botão de envio (chama a função sendContactForm) -->
-                <p id="contato-status" style="margin-top: 100px;"></p> <!-- Mensagem de status após o envio do formulário -->
+            
+            <h3>Email: dropmusic@gmail.com</h3>
             </form>
         </div>
     </main>
