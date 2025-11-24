@@ -1,7 +1,7 @@
 // --- JAVASCRIPT: Lógica e Interatividade (ATUALIZADO com MODO ADMIN) ---
 
 // VARIÁVEL DE ADMINISTRAÇÃO
-const ADMIN_PASSWORD = "Adm987654@"; // *** DEFINA A SUA SENHA AQUI (ATENÇÃO: Este é um exemplo, use uma senha segura) ***
+const ADMIN_PASSWORD = "Abc123."; // *** DEFINA A SUA SENHA AQUI (ATENÇÃO: Este é um exemplo, use uma senha segura) ***
 let isAdmin = false; // Estado inicial: Variável de controle que indica se o usuário está logado como administrador
 
 // Garante que o código só execute depois que o documento HTML estiver totalmente carregado
@@ -10,22 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
     loadContent('noticia');
     loadContent('review');
 
-        // Configura os links de navegação
-        document.querySelectorAll('.nav-link').forEach(link => { 
-         link.addEventListener('click', function() { 
-            showPage(this.getAttribute('data-page')); 
-         });
+    // Configura os links de navegação
+    document.querySelectorAll('.nav-link').forEach(link => { // Seleciona todos os links com a classe 'nav-link'
+        link.addEventListener('click', function() { // Adiciona um ouvinte de evento de clique a cada link
+            showPage(this.getAttribute('data-page')); // Chama a função para mostrar a página correspondente ao atributo 'data-page'
+        });
     });
 
-        // Configura o envio do formulário de contato
-        document.getElementById('contact-form').addEventListener('submit', function(event) { 
-         // !!! REMOVIDO: event.preventDefault(); !!!
-        // A função sendContactForm será chamada, mas o envio nativo (mailto:) não será bloqueado.
-         sendContactForm(event); // Passamos o evento para a função
+    // Configura o envio do formulário de contato
+    document.getElementById('contact-form').addEventListener('submit', function(event) { // Ouve o evento de 'submit' (envio) do formulário de contato
+        event.preventDefault(); // Impede o comportamento padrão de recarregamento da página ao enviar o formulário
+        sendContactForm(); // Chama a função para processar o formulário de contato
     });
-
-     // Adiciona listener para a tecla Enter na barra de pesquisa
-     document.getElementById('search-input').addEventListener('keydown', handleSearchKey); 
+    
+    // Adiciona listener para a tecla Enter na barra de pesquisa
+    document.getElementById('search-input').addEventListener('keydown', handleSearchKey); // Ouve a tecla pressionada no campo de busca
 });
 
 // --- FUNÇÕES DE ADMINISTRAÇÃO ---
@@ -261,60 +260,4 @@ function postContent(type) {
     
     document.querySelector(`#${type} .content-form`).reset(); // Limpa os campos do formulário
     toggleForm(`postagem-${type}`); // Esconde o formulário após postar
-}
-
-
-// --- FUNÇÕES DE CONTATO E BUSCA (ATUALIZADAS) ---
-
-function sendContactForm(event) {
-    const nome = document.getElementById('contato-nome').value; 
-    const email = document.getElementById('contato-email').value; 
-    const mensagem = document.getElementById('contato-mensagem').value; 
-    const statusElement = document.getElementById('contato-status'); 
-
-     // Validação (feita pelo HTML 'required' e pelo JS)
-     if (!nome || !email || !mensagem) {
-         statusElement.textContent = "Preencha todos os campos."; 
-            statusElement.style.color = 'red'; 
-        // Se a validação falhar, ainda precisamos prevenir o envio, 
-        // pois o preventDefault foi removido do listener principal.
-        event.preventDefault(); 
-        return; 
-    }
-
-    // SIMULAÇÃO: Envio de Contato (no mundo real, aqui haveria uma chamada a um servidor)
-    console.log(`Formulário de Contato enviado:`); // Log no console
-    console.log(`- Nome: ${nome}`); // Log do nome
-    console.log(`- Email: ${email}`); // Log do email
-    console.log(`- Mensagem: ${mensagem}`); // Log da mensagem
-    
-    statusElement.textContent = `Obrigado, ${nome}! Sua mensagem foi enviada.`; // Mensagem de sucesso para o usuário
-    statusElement.style.color = 'blue'; // Cor azul para o status
-
-    document.getElementById('contact-form').reset(); // Limpa o formulário após o envio
-}
-
-function searchSite() {
-    const query = document.getElementById('search-input').value; // Captura o termo de busca
-    if (query.trim() === "") { // Verifica se a busca está vazia ou só com espaços
-        alert("Por favor, digite algo para pesquisar."); // Alerta o usuário
-        return; // Sai da função
-    }
-    console.log(`Simulando busca por: "${query}"`); // Log no console
-    alert(`Simulando busca no site por: "${query}"`); // Alerta a simulação de busca (Contexto de teste)
-}
-
-function handleSearchKey(event) {
-    if (event.key === 'Enter') { // Se a tecla pressionada for 'Enter'
-        searchSite(); // Chama a função de busca
-    }
-}
-function handlePostKey(event, type) {
-    if (event.key === 'Enter') { // Se a tecla pressionada for 'Enter'
-        event.preventDefault(); // Impede o comportamento padrão do Enter (como envio de formulário)
-        postContent(type); // Chama a função de postagem
-    }
-}
-function handleContactKey(event) {
-    // Esta função está aqui apenas para conformidade e não faz nada, pois o formulário é tratado no evento 'submit'
 }
